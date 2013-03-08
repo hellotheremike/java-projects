@@ -1,0 +1,135 @@
+package alda;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MyGraph<T extends Comparable<? super T>> implements MiniGraph<T> {
+	
+	private HashMap<T, Node> nodeMap = new HashMap<T, Node>();
+	private ArrayList<Edge> adjList = new ArrayList<Edge>();
+
+	private int NUMBER_OF_NODES = 0;
+	private int NUMBER_OF_EDGES = 0;
+	private int TOTAL_EDGE_WEIGHT = 0;
+	
+	private class Node{
+		private ArrayList<Edge> Edges = new ArrayList<Edge>();		
+		private T Data;
+		private int Position;
+		
+		public Node(T n, int p){
+			this.Data = n;
+			this.Position = p;
+		}
+		
+		public void add(Edge n){
+			Edges.add(n);
+		}
+		public Edge get(int n){
+			return Edges.get(n);
+		}
+		@SuppressWarnings("unused")
+		public void remove(int n){
+			Edges.remove(n);
+		}
+		
+		
+	}
+
+	private class Edge{
+		public int Destination;
+		public int Weight;	
+		
+		public Edge(int n1, int w){
+			this.Destination = n1;	
+			this.Weight = w;		
+		}
+	}
+		
+	@Override
+	public void addNode(T n) {
+		if(nodeMap.get(n) == null){
+			Node node = new Node(n, NUMBER_OF_NODES++);
+	        nodeMap.put(n, node);	
+		}
+	}
+
+	@Override
+	public void removeNode(T n) {    
+		if(nodeMap.remove(n) != null){
+			NUMBER_OF_NODES--;
+		}       
+	}
+
+	public void connectNodes(T n1, T n2, int weight) {
+		Node a = nodeMap.get(n1);
+		Node b = nodeMap.get(n2);
+		
+		if(a != null && b != null ){
+			Edge e = new Edge(b.Position, weight);
+			a.add(e);
+			e = new Edge(a.Position, weight);
+			b.add(e);
+
+		}
+
+	}
+
+	@Override
+	public void disconnectNodes(T n1, T n2) {
+
+	}
+
+	@Override
+	public boolean contains(T n) {
+		if(nodeMap.get(n) != null)
+			return  true;
+		else
+			return false;
+	}
+
+	@Override
+	public int getNumberOfNodes() {
+
+		return NUMBER_OF_NODES;
+	}
+
+	@Override
+	public boolean edgeExistsBetween(T n1, T n2) {
+		Integer a = (Integer) nodeMap.get(n1);
+		Integer b = (Integer) nodeMap.get(n2);
+
+		if(a != null && b != null ){
+			//Edge ae = adjList.get(a);
+			//Edge be = adjList.get(b);
+			
+			Edge ae = ts[a].get(a);
+			Edge be = ts[b].get(b);
+			if(be.Destination == a && ae.Destination == b)
+				return true;
+			else
+				return false;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public int getNumberOfEdges() {
+		return NUMBER_OF_EDGES;
+	}
+
+	@Override
+	public int getTotalEdgeWeight() {
+		return TOTAL_EDGE_WEIGHT;
+	}
+
+	@Override
+	public MiniGraph generateMinimumSpanningTree() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

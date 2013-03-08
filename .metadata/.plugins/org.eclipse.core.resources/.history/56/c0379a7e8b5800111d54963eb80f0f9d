@@ -1,0 +1,75 @@
+package alda;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MyGraph<T extends Comparable<? super T>> implements MiniGraph<T> {
+	
+	private HashMap<T, Node> nodeMap = new HashMap<T, Node>();
+	private ArrayList<Edge> adjList = new ArrayList<Edge>();
+
+	private int NUMBER_OF_NODES = 0;
+	private int NUMBER_OF_EDGES = 0;
+	private int TOTAL_EDGE_WEIGHT = 0;
+	
+	private class Node{
+		
+	}
+
+	private class Edge{
+
+	}
+		
+	@Override
+	public void addNode(T n) {
+
+	}
+
+	@Override
+	public void removeNode(T n) {    
+
+	}
+
+	public void connectNodes(T n1, T n2, int weight) {
+
+	}
+
+	@Override
+	public void disconnectNodes(T n1, T n2) {
+
+	}
+
+	@Override
+	public boolean contains(T n) {
+		return false;
+	}
+
+	@Override
+	public int getNumberOfNodes() {
+		return NUMBER_OF_NODES;
+	}
+
+	@Override
+	public boolean edgeExistsBetween(T n1, T n2) {
+
+		
+	}
+
+	@Override
+	public int getNumberOfEdges() {
+		return NUMBER_OF_EDGES;
+	}
+
+	@Override
+	public int getTotalEdgeWeight() {
+		return TOTAL_EDGE_WEIGHT;
+	}
+
+	@Override
+	public MiniGraph generateMinimumSpanningTree() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

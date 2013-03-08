@@ -1,0 +1,92 @@
+package alda;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MyGraph<T extends Comparable<? super T>> implements MiniGraph<T> {
+	
+	private HashMap<T, Integer> nodeMap = new HashMap<T, Integer>();
+	private boolean Connections[][];
+	private Bag<Integer>[] Bag;
+	private int NUMBER_OF_NODES = 0;
+	private int NUMBER_OF_EDGES = 0;
+	private int TOTAL_EDGE_WEIGHT = 0;
+	
+	private class Bag<Intger>{
+		private ArrayList Edges = new ArrayList();		
+		
+		public void add(int n){
+			Edges.add(n);
+		}
+		
+		
+	}
+	
+	
+	@Override
+	public void addNode(T n) {
+		if(nodeMap.get(n) == null){
+	        nodeMap.put(n, NUMBER_OF_NODES++);		        
+		}
+	}
+
+	@Override
+	public void removeNode(T n) {    
+		if(nodeMap.remove(n) != null){
+			NUMBER_OF_NODES--;
+		}       
+	}
+
+	public void connectNodes(T n1, T n2, int weight) {
+		int nodeA = nodeMap.get(n1);
+		int nodeB = nodeMap.get(n1);
+		Bag[nodeB].add(nodeA);
+		Bag[nodeA].add(nodeB);
+	}
+
+	@Override
+	public void disconnectNodes(T n1, T n2) {
+
+
+	}
+
+	@Override
+	public boolean contains(T n) {
+		int node = nodeMap.get(n);
+		System.out.println(node);
+		boolean found = false;
+		//if(node != ){
+			found=  true;
+//		}
+		return found;
+	}
+
+	@Override
+	public int getNumberOfNodes() {
+
+		return NUMBER_OF_NODES;
+	}
+
+	@Override
+	public boolean edgeExistsBetween(T n1, T n2) {
+		return false;
+	}
+
+	@Override
+	public int getNumberOfEdges() {
+		return NUMBER_OF_EDGES;
+	}
+
+	@Override
+	public int getTotalEdgeWeight() {
+		return TOTAL_EDGE_WEIGHT;
+	}
+
+	@Override
+	public MiniGraph generateMinimumSpanningTree() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

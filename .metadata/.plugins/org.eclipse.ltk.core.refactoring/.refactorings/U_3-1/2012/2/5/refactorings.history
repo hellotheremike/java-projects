@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;alda.BinaryHeap.java&apos; to &apos;MyMiniHeap.java&apos;&#x0D;&#x0A;- Original project: &apos;U_3-1&apos;&#x0D;&#x0A;- Original element: &apos;alda.BinaryHeap.java&apos;&#x0D;&#x0A;- Renamed element: &apos;alda.MyMiniHeap.java&apos;" description="Rename compilation unit &apos;BinaryHeap.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;alda{BinaryHeap.java" name="MyMiniHeap.java" references="false" stamp="1328103172941" version="1.0"/>
+</session>

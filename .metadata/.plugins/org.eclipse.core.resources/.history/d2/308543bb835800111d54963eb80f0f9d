@@ -1,0 +1,113 @@
+package alda;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MyGraph<T extends Comparable<? super T>> implements MiniGraph<T> {
+	
+	private HashMap<T, Integer> nodeMap = new HashMap<T, Integer>();
+	private Bag[] adjList;
+	private int NUMBER_OF_NODES = 0;
+	private int NUMBER_OF_EDGES = 0;
+	private int TOTAL_EDGE_WEIGHT = 0;
+	
+	private class Edge {
+		public int Destination;
+		public int Weight;
+		
+		public Edge(int n1, int w){
+			this.Destination = n1;	
+			this.Weight = w;		
+		}
+	}
+	
+	private class Bag{
+		private ArrayList Edges = new ArrayList();		
+		
+		public void add(Edge n){
+			Edges.add(n);
+		}
+		public void remove(int n){
+			Edges.remove(n);
+		}
+		public boolean check(int n){
+			return Edges.get(n) != null;
+		}
+		
+		
+	}
+	
+	@Override
+	public void addNode(T n) {
+		if(nodeMap.get(n) == null){
+	        nodeMap.put(n, NUMBER_OF_NODES++);	
+		}
+	}
+
+	@Override
+	public void removeNode(T n) {    
+		if(nodeMap.remove(n) != null){
+			NUMBER_OF_NODES--;
+		}       
+	}
+
+	public void connectNodes(T n1, T n2, int weight) {
+		/*Integer s = nodeMap.get(n1);
+		Integer b = nodeMap.get(n2);
+		if(nodeMap.get(n1) != null && nodeMap.get(n2) != null ){
+
+			Edge e = new Edge(nodeMap.get(n1), weight);
+			adjList[1].add(e);
+			e = new Edge(nodeMap.get(n2), weight);
+			adjList[1].add(e);
+			System.out.println(nodeMap.get(n2) + " " + nodeMap.get(n1));
+		}*/
+		Edge e = new Edge(nodeMap.get(n1), weight);
+		adjList[1].add(e);
+	}
+
+	@Override
+	public void disconnectNodes(T n1, T n2) {
+
+	}
+
+	@Override
+	public boolean contains(T n) {
+		Integer node = (Integer) nodeMap.get(n);
+		//System.out.println(node);
+		boolean found = false;
+		if(node != null){
+			found=  true;
+		}
+		return found;
+	}
+
+	@Override
+	public int getNumberOfNodes() {
+
+		return NUMBER_OF_NODES;
+	}
+
+	@Override
+	public boolean edgeExistsBetween(T n1, T n2) {
+		return true;
+	}
+
+	@Override
+	public int getNumberOfEdges() {
+		return NUMBER_OF_EDGES;
+	}
+
+	@Override
+	public int getTotalEdgeWeight() {
+		return TOTAL_EDGE_WEIGHT;
+	}
+
+	@Override
+	public MiniGraph generateMinimumSpanningTree() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
